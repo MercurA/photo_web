@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { MainContext } from '../../context/MainContext'
 import type { ImageDetailsType, MainContextType } from '../../types'
+import { customLocationIcon } from './customIcons'
 
 const EMAIL = 'necrosis.state@gmail.com'
 
@@ -106,6 +107,7 @@ const Map = () => {
 				key={city}
 				position={coords}
 				interactive={true}
+				icon={customLocationIcon()}
 				eventHandlers={{
 					click: () => {
 						const foundImage = context.images.find(
