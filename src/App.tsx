@@ -1,21 +1,20 @@
-import PictureContainer from './components/picture/PictureContainer'
-import Map from './components/map/Map'
-import Drawer from './components/drawer/Drawer'
-import { MainContextProvider } from './context/MainContext'
-import Header from './components/header/Header'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
+
+// Import the generated route tree
+import { routeTree } from './routeTree.gen'
+
+// Create a new router instance
+const router = createRouter({ routeTree })
+
+// Register the router instance for type safety
+declare module '@tanstack/react-router' {
+  interface Register {
+    router: typeof router
+  }
+}
 
 function App() {
-	return (
-		<MainContextProvider>
-			<div className="w-screen h-screen grid grid-rows-[1fr_3fr_1fr] bg-zinc-900 text-white">
-				<Header />
-				<PictureContainer />
-				<Drawer>
-					<Map />
-				</Drawer>
-			</div>
-		</MainContextProvider>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default App
