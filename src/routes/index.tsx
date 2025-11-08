@@ -2,10 +2,10 @@ import { createFileRoute } from '@tanstack/react-router'
 import Hero from '../components/hero/Hero'
 
 export const Route = createFileRoute('/')({
-  component: Index,
+  component: Home,
 })
 
-function Index() {
+function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-full p-8">
       <Hero />
